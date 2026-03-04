@@ -1,7 +1,7 @@
+import { RouterProvider } from 'react-router';
+import { router } from './routes'; // This pulls in the router from src/app/routes.tsx
 
-  import { createRoot } from "react-dom/client";
-  import App from "./app/App.tsx";
-  import "./styles/index.css";
-
-  createRoot(document.getElementById("root")!).render(<App />);
-  
+export default function App() {
+  // We pass the 'router' variable into the Provider
+  return <RouterProvider router={router} />;
+}
