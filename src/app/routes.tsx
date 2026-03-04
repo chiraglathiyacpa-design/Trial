@@ -1,7 +1,7 @@
 import { createBrowserRouter, Outlet, useLocation } from "react-router";
-import { useEffect } from "react";
+import { useEffect, type ReactElement } from "react";
 
-// Page Imports
+// Page Imports - ENSURE THESE FILENAMES MATCH YOUR FILES EXACTLY (Case-Sensitive)
 import { HomePage } from "./pages/HomePage";
 import { ServicesPage } from "./pages/ServicesPage";
 import { AboutPage } from "./pages/AboutPage";
@@ -13,10 +13,9 @@ import { TermsOfServicePage } from "./pages/TermsOfServicePage";
 import { CookiePolicyPage } from "./pages/CookiePolicyPage";
 
 /**
- * ScrollToTop Component
- * Listens to the URL path and scrolls to 0,0 on change.
+ * ScrollToTop: Forces the browser to the top of the page on route changes.
  */
-function ScrollToTop() {
+function ScrollToTop(): null {
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -25,10 +24,9 @@ function ScrollToTop() {
 }
 
 /**
- * RootLayout
- * The wrapper that holds the ScrollToTop logic and the page content.
+ * RootLayout: The main wrapper for the application.
  */
-function RootLayout() {
+function RootLayout(): ReactElement {
   return (
     <>
       <ScrollToTop />
@@ -37,11 +35,10 @@ function RootLayout() {
   );
 }
 
-// ROUTER DEFINITION
+// FINAL ROUTER CONFIGURATION
 export const router = createBrowserRouter(
   [
     {
-      // Note: Component (capital C) is the standard for React Router v7
       Component: RootLayout,
       children: [
         { index: true, Component: HomePage },
