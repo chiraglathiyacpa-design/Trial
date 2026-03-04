@@ -4,7 +4,7 @@ import { Menu, X, Phone, Mail } from 'lucide-react';
 import { Button } from './ui/button';
 
 // FIX: Changed from 'figma:asset/...' to a relative path
-import logoImg from '../assets/e09cf434f4642b4eefbedaec44ef7fab7fd81999.png'; 
+import logoImg from '../../assets/e09cf434f4642b4eefbedaec44ef7fab7fd81999.png';
 
 function TaxClaimLogo() {
   // ... (rest of the component stays the same)
