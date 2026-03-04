@@ -4,7 +4,8 @@ import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  base: '/trial/', 
+  // Using './' tells the browser to look for assets relative to where index.html is
+  base: './', 
   plugins: [
     react(),
     tailwindcss(),
@@ -15,7 +16,6 @@ export default defineConfig({
       'figma:asset': path.resolve(__dirname, './src/assets'),
     },
   },
-  assetsInclude: ['**/*.svg', '**/*.csv'],
   build: {
     outDir: 'dist',
     emptyOutDir: true,
