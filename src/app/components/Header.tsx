@@ -2,9 +2,12 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router';
 import { Menu, X, Phone, Mail } from 'lucide-react';
 import { Button } from './ui/button';
-import logoImg from 'figma:asset/e09cf434f4642b4eefbedaec44ef7fab7fd81999.png';
+
+// FIX: Changed from 'figma:asset/...' to a relative path
+import logoImg from '../assets/e09cf434f4642b4eefbedaec44ef7fab7fd81999.png'; 
 
 function TaxClaimLogo() {
+  // ... (rest of the component stays the same)
   return (
     <div className="flex flex-col leading-none">
       <span style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: '1.35rem', letterSpacing: '-0.01em' }}>
