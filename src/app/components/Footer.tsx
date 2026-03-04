@@ -2,7 +2,7 @@ import { Link } from 'react-router';
 import { Mail, Phone, MapPin } from 'lucide-react';
 
 // EXACT CHANGE: Use a relative path so Vite can bundle the image
-import logoWhiteImg from '../assets/ab39d0d1adb619a98bbaa602fe6d2ee4a7060e88.png';
+import logoWhiteImg from '../../assets/ab39d0d1adb619a98bbaa602fe6d2ee4a7060e88.png';
 
 export function Footer() {
 // ... (the rest of your component code is perfect and does not need to change)
