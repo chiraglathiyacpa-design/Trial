@@ -1,59 +1,23 @@
-import { createBrowserRouter, Outlet, useLocation } from "react-router";
-import { useEffect, type ReactElement } from "react";
+import { createBrowserRouter } from 'react-router';
+// ... your other imports (Home, About, etc.)
 
-// Page Imports - ENSURE THESE FILENAMES MATCH YOUR FILES EXACTLY (Case-Sensitive)
-import { HomePage } from "./pages/HomePage";
-import { ServicesPage } from "./pages/ServicesPage";
-import { AboutPage } from "./pages/AboutPage";
-import { ContactPage } from "./pages/ContactPage";
-import { FAQPage } from "./pages/FAQPage";
-import { BlogPage } from "./pages/BlogPage";
-import { PrivacyPolicyPage } from "./pages/PrivacyPolicyPage";
-import { TermsOfServicePage } from "./pages/TermsOfServicePage";
-import { CookiePolicyPage } from "./pages/CookiePolicyPage";
-
-/**
- * ScrollToTop: Forces the browser to the top of the page on route changes.
- */
-function ScrollToTop(): null {
-  const { pathname } = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-  return null;
-}
-
-/**
- * RootLayout: The main wrapper for the application.
- */
-function RootLayout(): ReactElement {
-  return (
-    <>
-      <ScrollToTop />
-      <Outlet />
-    </>
-  );
-}
-
-// FINAL ROUTER CONFIGURATION
 export const router = createBrowserRouter(
   [
     {
-      Component: RootLayout,
+      path: '/',
+      element: <RootLayout />, // Or whatever your main wrapper is
       children: [
-        { index: true, Component: HomePage },
-        { path: "services", Component: ServicesPage },
-        { path: "about", Component: AboutPage },
-        { path: "contact", Component: ContactPage },
-        { path: "faq", Component: FAQPage },
-        { path: "resources", Component: BlogPage },
-        { path: "privacy-policy", Component: PrivacyPolicyPage },
-        { path: "terms-of-service", Component: TermsOfServicePage },
-        { path: "cookie-policy", Component: CookiePolicyPage },
+        { path: '/', element: <Home /> },
+        { path: '/services', element: <Services /> },
+        { path: '/about', element: <About /> },
+        { path: '/faq', element: <FAQ /> },
+        { path: '/resources', element: <Resources /> },
+        { path: '/contact', element: <Contact /> },
       ],
     },
   ],
   {
-    basename: "/trial",
+    // THIS IS THE FIX: It tells React Router your site is in the /trial/ folder
+    basename: '/trial', 
   }
 );
