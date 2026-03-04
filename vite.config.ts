@@ -4,6 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
+  // Use './' for relative asset paths in GitHub Pages subfolders
   base: './', 
   plugins: [
     react(),
@@ -12,7 +13,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
-      // This tells Vite: whenever you see "figma:asset", look in "src/assets"
+      // Maps the Figma prefix to your actual assets folder
       'figma:asset': path.resolve(__dirname, './src/assets'),
     },
   },
@@ -20,6 +21,6 @@ export default defineConfig({
     outDir: 'dist',
     emptyOutDir: true,
     assetsDir: 'assets',
-    // REMOVED rollupOptions.external so Vite actually bundles the images
+    // We do NOT use 'external' here so Vite physically moves images to 'dist/assets'
   },
 })
