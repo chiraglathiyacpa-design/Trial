@@ -1,3 +1,35 @@
+import { createBrowserRouter, Outlet, useLocation } from "react-router";
+import { useEffect } from "react";
+
+// Page Imports
+import { HomePage } from "./pages/HomePage";
+import { ServicesPage } from "./pages/ServicesPage";
+import { AboutPage } from "./pages/AboutPage";
+import { ContactPage } from "./pages/ContactPage";
+import { FAQPage } from "./pages/FAQPage";
+import { BlogPage } from "./pages/BlogPage";
+import { PrivacyPolicyPage } from "./pages/PrivacyPolicyPage";
+import { TermsOfServicePage } from "./pages/TermsOfServicePage";
+import { CookiePolicyPage } from "./pages/CookiePolicyPage";
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
+
+function RootLayout() {
+  return (
+    <>
+      <ScrollToTop />
+      <Outlet />
+    </>
+  );
+}
+
+// FINAL ROUTER CONFIGURATION
 export const router = createBrowserRouter(
   [
     {
@@ -16,7 +48,7 @@ export const router = createBrowserRouter(
     },
   ],
   {
-    // This tells React Router: "My app starts at /trial/, not at the root"
+    // Essential for GitHub Pages subfolder (/trial/)
     basename: "/trial",
   }
 );
