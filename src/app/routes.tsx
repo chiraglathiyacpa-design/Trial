@@ -1,23 +1,29 @@
-import { createBrowserRouter } from 'react-router';
-// ... your other imports (Home, About, etc.)
+// 1. Ensure createBrowserRouter is in this list!
+import { createBrowserRouter, Outlet, useLocation } from "react-router"; 
+import { useEffect } from "react";
+// ... (keep all your Page imports exactly as they are)
 
+// ... (keep ScrollToTop and RootLayout exactly as they are)
+
+// 2. Updated Export with the correct syntax
 export const router = createBrowserRouter(
   [
     {
-      path: '/',
-      element: <RootLayout />, // Or whatever your main wrapper is
+      Component: RootLayout,
       children: [
-        { path: '/', element: <Home /> },
-        { path: '/services', element: <Services /> },
-        { path: '/about', element: <About /> },
-        { path: '/faq', element: <FAQ /> },
-        { path: '/resources', element: <Resources /> },
-        { path: '/contact', element: <Contact /> },
+        { path: "/", Component: HomePage },
+        { path: "/services", Component: ServicesPage },
+        { path: "/about", Component: AboutPage },
+        { path: "/contact", Component: ContactPage },
+        { path: "/faq", Component: FAQPage },
+        { path: "/resources", Component: BlogPage },
+        { path: "/privacy-policy", Component: PrivacyPolicyPage },
+        { path: "/terms-of-service", Component: TermsOfServicePage },
+        { path: "/cookie-policy", Component: CookiePolicyPage },
       ],
     },
   ],
   {
-    // THIS IS THE FIX: It tells React Router your site is in the /trial/ folder
-    basename: '/trial', 
+    basename: "/trial", // This fixes the 404 on GitHub Pages
   }
 );
