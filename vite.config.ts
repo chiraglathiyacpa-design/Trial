@@ -4,7 +4,6 @@ import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  // Using './' tells the browser to look for assets relative to where index.html is
   base: './', 
   plugins: [
     react(),
@@ -13,6 +12,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
+      // This tells Vite: whenever you see "figma:asset", look in "src/assets"
       'figma:asset': path.resolve(__dirname, './src/assets'),
     },
   },
@@ -20,8 +20,6 @@ export default defineConfig({
     outDir: 'dist',
     emptyOutDir: true,
     assetsDir: 'assets',
-    rollupOptions: {
-      external: [/^figma:asset/],
-    },
+    // REMOVED rollupOptions.external so Vite actually bundles the images
   },
 })
