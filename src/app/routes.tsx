@@ -12,6 +12,9 @@ import { PrivacyPolicyPage } from "./pages/PrivacyPolicyPage";
 import { TermsOfServicePage } from "./pages/TermsOfServicePage";
 import { CookiePolicyPage } from "./pages/CookiePolicyPage";
 
+/**
+ * Ensures the window scrolls to the top whenever the URL path changes.
+ */
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -20,6 +23,10 @@ function ScrollToTop() {
   return null;
 }
 
+/**
+ * The RootLayout wraps all pages to provide consistent behavior (like ScrollToTop)
+ * and uses <Outlet /> to render the specific child route components.
+ */
 function RootLayout() {
   return (
     <>
@@ -35,20 +42,21 @@ export const router = createBrowserRouter(
     {
       Component: RootLayout,
       children: [
-        { path: "/", Component: HomePage },
-        { path: "/services", Component: ServicesPage },
-        { path: "/about", Component: AboutPage },
-        { path: "/contact", Component: ContactPage },
-        { path: "/faq", Component: FAQPage },
-        { path: "/resources", Component: BlogPage },
-        { path: "/privacy-policy", Component: PrivacyPolicyPage },
-        { path: "/terms-of-service", Component: TermsOfServicePage },
-        { path: "/cookie-policy", Component: CookiePolicyPage },
+        // 'index: true' tells the router this is the default component for the base path
+        { index: true, Component: HomePage },
+        { path: "services", Component: ServicesPage },
+        { path: "about", Component: AboutPage },
+        { path: "contact", Component: ContactPage },
+        { path: "faq", Component: FAQPage },
+        { path: "resources", Component: BlogPage },
+        { path: "privacy-policy", Component: PrivacyPolicyPage },
+        { path: "terms-of-service", Component: TermsOfServicePage },
+        { path: "cookie-policy", Component: CookiePolicyPage },
       ],
     },
   ],
   {
-    // Essential for GitHub Pages subfolder (/trial/)
+    // CRITICAL: Tells the router your app lives in the /trial/ subfolder on GitHub Pages
     basename: "/trial",
   }
 );
