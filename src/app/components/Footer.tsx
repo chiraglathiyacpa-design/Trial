@@ -1,8 +1,11 @@
 import { Link } from 'react-router';
 import { Mail, Phone, MapPin } from 'lucide-react';
-import logoWhiteImg from 'figma:asset/ab39d0d1adb619a98bbaa602fe6d2ee4a7060e88.png';
+
+// EXACT CHANGE: Use a relative path so Vite can bundle the image
+import logoWhiteImg from '../assets/ab39d0d1adb619a98bbaa602fe6d2ee4a7060e88.png';
 
 export function Footer() {
+// ... (the rest of your component code is perfect and does not need to change)
   return (
     <footer className="bg-slate-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
