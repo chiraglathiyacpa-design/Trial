@@ -13,7 +13,8 @@ import { TermsOfServicePage } from "./pages/TermsOfServicePage";
 import { CookiePolicyPage } from "./pages/CookiePolicyPage";
 
 /**
- * Ensures the window scrolls to the top whenever the URL path changes.
+ * ScrollToTop Component
+ * Listens to the URL path and scrolls to 0,0 on change.
  */
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -24,8 +25,8 @@ function ScrollToTop() {
 }
 
 /**
- * The RootLayout wraps all pages to provide consistent behavior (like ScrollToTop)
- * and uses <Outlet /> to render the specific child route components.
+ * RootLayout
+ * The wrapper that holds the ScrollToTop logic and the page content.
  */
 function RootLayout() {
   return (
@@ -36,13 +37,13 @@ function RootLayout() {
   );
 }
 
-// FINAL ROUTER CONFIGURATION
+// ROUTER DEFINITION
 export const router = createBrowserRouter(
   [
     {
+      // Note: Component (capital C) is the standard for React Router v7
       Component: RootLayout,
       children: [
-        // 'index: true' tells the router this is the default component for the base path
         { index: true, Component: HomePage },
         { path: "services", Component: ServicesPage },
         { path: "about", Component: AboutPage },
@@ -56,7 +57,6 @@ export const router = createBrowserRouter(
     },
   ],
   {
-    // CRITICAL: Tells the router your app lives in the /trial/ subfolder on GitHub Pages
     basename: "/trial",
   }
 );
