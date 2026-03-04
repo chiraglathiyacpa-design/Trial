@@ -1,7 +1,11 @@
 import { defineConfig } from 'vite'
-import path from 'path'
-import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+import { fileURLToPath } from 'url'
+import path from 'path'
+
+// This creates a reliable __dirname for ESM modules
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
   base: './', 
@@ -12,13 +16,12 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
-      // Important: This maps figma:asset to the local assets folder
       'figma:asset': path.resolve(__dirname, './src/assets'),
     },
   },
   build: {
     outDir: 'dist',
-    emptyOutDir: true,
     assetsDir: 'assets',
+    emptyOutDir: true,
   },
 })
